@@ -12,11 +12,29 @@
     
     
     <item>
-      <title>Tech</title>
-      <link>https://kidothunder.github.io/tags/tech/</link>
+      <title>API</title>
+      <link>https://kidothunder.github.io/tags/api/</link>
       <pubDate>Thu, 09 Jul 2020 10:47:03 +0800</pubDate>
       
-      <guid>https://kidothunder.github.io/tags/tech/</guid>
+      <guid>https://kidothunder.github.io/tags/api/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Authentication</title>
+      <link>https://kidothunder.github.io/tags/authentication/</link>
+      <pubDate>Thu, 09 Jul 2020 10:47:03 +0800</pubDate>
+      
+      <guid>https://kidothunder.github.io/tags/authentication/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Authorization</title>
+      <link>https://kidothunder.github.io/tags/authorization/</link>
+      <pubDate>Thu, 09 Jul 2020 10:47:03 +0800</pubDate>
+      
+      <guid>https://kidothunder.github.io/tags/authorization/</guid>
       <description></description>
     </item>
     
