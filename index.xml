@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kido&#39;s Blog</title>
+    <link>https://kidothunder.github.io/</link>
+    <description>Recent content on Kido&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 09 Mar 2020 11:37:42 +0800</lastBuildDate>
+    
+	<atom:link href="https://kidothunder.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>About</title>
+      <link>https://kidothunder.github.io/about/</link>
+      <pubDate>Mon, 09 Mar 2020 11:37:42 +0800</pubDate>
+      
+      <guid>https://kidothunder.github.io/about/</guid>
+      <description>一个对新鲜事物永远保持好奇，热爱生活的人。 作为一个IT技术从业者，我会在这里分享一些我认为有价值的东西。 当然，不仅局限于技术相关，可能包含生</description>
+    </item>
+    
+    <item>
+      <title>认证与授权</title>
+      <link>https://kidothunder.github.io/post/%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%8E%88%E6%9D%83/</link>
+      <pubDate>Thu, 09 Jul 2020 10:47:03 +0800</pubDate>
+      
+      <guid>https://kidothunder.github.io/post/%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%8E%88%E6%9D%83/</guid>
+      <description>前言：最近有空翻了翻技术的RoadMap，发现自己在认证和授权这块很多概念比较模糊，于是大致就整理分析了下，全文如下。 为什么我们需要认证？ 因</description>
+    </item>
+    
+  </channel>
+</rss>

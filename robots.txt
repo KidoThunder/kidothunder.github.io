@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://kidothunder.github.io/sitemap.xml
