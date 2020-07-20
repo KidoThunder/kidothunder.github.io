@@ -223,14 +223,14 @@
       <h3 id="前言最近有空翻了翻技术的roadmap发现自己在认证和授权这块很多概念比较模糊于是大致就整理分析了下全文如下">前言：最近有空翻了翻技术的RoadMap，发现自己在认证和授权这块很多概念比较模糊，于是大致就整理分析了下，全文如下。</h3>
 <h2 id="为什么我们需要认证">为什么我们需要认证？</h2>
 <h3 id="因为http是无状态的于是为了追踪用户想出来很多方法包括-cookiesession-机制tokenflash-跨浏览器-cookiehttpcxhme20141125flash-shared-cookie甚至浏览器指纹等">因为HTTP是无状态的，于是为了追踪用户想出来很多方法，包括 cookie/session 机制、token、<a href="http://cxh.me/2014/11/25/flash-shared-cookie/">flash 跨浏览器 cookie</a>甚至浏览器指纹等。</h3>
-<p><img src="https://s1.ax1x.com/2020/07/09/UeWEwT.png" alt="image-20200702213420870"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/KidoThunder/images/imagesUeWEwT.png" alt="image-20200702213420870"></p>
 <h2 id="认证是什么和授权的关系">认证是什么？和授权的关系？</h2>
 <h3 id="认证是-authentication指的是当用户登陆过后系统便能追踪到他的身份做出符合相应业务逻辑的操作即使用户没有登录大多数系统也会追踪他的身份只是当做来宾或者匿名用户来处理认证技术解决的是-我是谁的问题">认证是 Authentication，指的是、当用户登陆过后系统便能追踪到他的身份做出符合相应业务逻辑的操作。即使用户没有登录，大多数系统也会追踪他的身份，只是当做来宾或者匿名用户来处理。认证技术解决的是 “我是谁？”的问题。</h3>
 <h3 id="授权是-authorization指的是什么样的身份被允许访问某些资源在获取到用户身份后继续检查用户的权限单一的系统授权往往是伴随认证来完成的但是在开放-api-的多系统结构下授权可以由不同的系统来完成例如-oauth授权技术是解决我能做什么的问题">授权是 Authorization，指的是什么样的身份被允许访问某些资源，在获取到用户身份后继续检查用户的权限。单一的系统授权往往是伴随认证来完成的，但是在开放 API 的多系统结构下，授权可以由不同的系统来完成，例如 OAuth。授权技术是解决“我能做什么？”的问题。</h3>
 <h2 id="cookie-based-authentication">Cookie Based Authentication</h2>
 <h3 id="基于cookie的认证方式每个请求里携带cookie信息以便于服务器进行识别">基于cookie的认证方式，每个请求里携带cookie信息以便于服务器进行识别</h3>
 <h3 id="工作流程">工作流程：</h3>
-<p>​	<img src="https://s1.ax1x.com/2020/07/09/UeW0Xt.png" alt="image-20200702213611987"></p>
+<p>​	<img src="https://cdn.jsdelivr.net/gh/KidoThunder/images/imagesUeW0Xt.png" alt="image-20200702213611987"></p>
 <ul>
 <li>1.用户输入用户名和密码，发送给服务器</li>
 <li>2.服务器验证用户名和密码，正确的话创建一个会话（Session）</li>
@@ -244,9 +244,9 @@
 <li>原生移动平台并不一定和 cookie 能良好的兼容，在使用中会存在一些限制和需要注意的地方</li>
 </ul>
 <h2 id="basic-authentication">Basic Authentication</h2>
-<p><img src="https://s1.ax1x.com/2020/07/09/UeWs78.png" alt="image-20200702214303488"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/KidoThunder/images/imagesUeWs78-20200720162258170.png" alt="image-20200702214303488"></p>
 <h3 id="工作流程-1">工作流程：</h3>
-<p><img src="https://s1.ax1x.com/2020/07/09/UeWDnP.png" alt="image-20200702214509125"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/KidoThunder/images/imagesUeWDnP-20200720162245898.png" alt="image-20200702214509125"></p>
 <ul>
 <li>
 <ol>
@@ -287,7 +287,7 @@
 <h2 id="token-based-authentication">Token Based Authentication</h2>
 <h3 id="基于token的认证在每个请求中携带被签名过的token信息传送到服务端"><strong>基于Token的认证</strong>，在每个请求中携带被签名过的Token信息传送到服务端</h3>
 <h3 id="工作流程-2">工作流程：</h3>
-<p><img src="https://s1.ax1x.com/2020/07/09/UeWw6I.png" alt="image-20200702215937176"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/KidoThunder/images/imagesUeWw6I.png" alt="image-20200702215937176"></p>
 <ul>
 <li>
 <ol>
@@ -326,7 +326,7 @@
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="生成jwt的流程">生成JWT的流程：</h3>
-<p><img src="https://s1.ax1x.com/2020/07/09/UeWr0f.png" alt="image-20200702221501133"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/KidoThunder/images/imagesUeWr0f.png" alt="image-20200702221501133"></p>
 <ul>
 <li>
 <ol>
@@ -391,7 +391,7 @@
 <h3 id="客户端登录授权层以后服务提供商根据令牌的权限范围和有效期向客户端开放用户储存的资料">客户端登录授权层以后，服务提供商根据令牌的权限范围和有效期，向客户端开放用户储存的资料</h3>
 <h3 id="oauth-负责解决分布式系统之间的授权问题即使有时候客户端和资源服务器或者认证服务器存在同一台机器上oauth-没有解决认证的问题但提供了良好的设计利于和现有的认证系统对接">OAuth 负责解决分布式系统之间的授权问题，即使有时候客户端和资源服务器或者认证服务器存在同一台机器上。OAuth 没有解决认证的问题，但提供了良好的设计利于和现有的认证系统对接</h3>
 <h3 id="工作流程-3">工作流程：</h3>
-<p><img src="https://s1.ax1x.com/2020/07/09/UeWctg.png" alt="image-20200702230856330"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/KidoThunder/images/imagesUeWctg.png" alt="image-20200702230856330"></p>
 <ul>
 <li>
 <ol>
@@ -457,7 +457,7 @@
 <h3 id="如果要访问各种实体例如web-站点通常需要与每个实体关联的唯一帐戸openid-可使由-openid-提供者处理的一组凭证授予对支持-openid-的任何数目的实体的访问权">如果要访问各种实体（例如Web 站点），通常需要与每个实体关联的唯一帐戸。OpenID 可使由 OpenID 提供者处理的一组凭证授予对支持 OpenID 的任何数目的实体的访问权</h3>
 <h3 id="要求用户登录到某个支持-openid-并充当依赖方的实体例如web-站点时用户通过直接与-openid-提供者进行交互而不是向-依赖方rp-提供其凭证来进行认证openid-提供者验证用户身份并将认证确认信息发送回-rp从-openid-提供者收到此确认信息时rp-会将用户作为已认证用户接受">要求用户登录到某个支持 OpenID 并充当依赖方的实体（例如Web 站点）时，用户通过直接与 OpenID 提供者进行交互而不是向 依赖方（RP ）提供其凭证来进行认证。OpenID 提供者验证用户身份，并将认证确认信息发送回 RP。从 OpenID 提供者收到此确认信息时，RP 会将用户作为已认证用户接受</h3>
 <h3 id="工作流程-4">工作流程：</h3>
-<p><img src="https://s1.ax1x.com/2020/07/09/UeW6AS.png" alt="image-20200702233648904"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/KidoThunder/images/imagesUeW6AS.png" alt="image-20200702233648904"></p>
 <ul>
 <li>
 <ol>
@@ -499,7 +499,7 @@
 <h3 id="saml全称为security-assertion-markup-language是一种用于安全性断言的标记语言目前的最新版本是20"><strong>SAML</strong>，全称为<em>Security Assertion Markup Language</em>，是一种用于安全性断言的标记语言，目前的最新版本是2.0</h3>
 <h3 id="saml在单点登录中大有用处在saml协议中一旦用户身份被主网站身份鉴别服务器identity-provideridp认证过后该用户再去访问其他在主站注册过的应用服务提供者service-providerssp时都可以直接登录而不用再输入身份和口令">SAML在单点登录中大有用处：在<em>SAML</em>协议中，一旦用户身份被主网站（身份鉴别服务器，Identity Provider，<em>IDP</em>）认证过后，该用户再去访问其他在主站注册过的应用（服务提供者，Service Providers，<em>SP</em>）时，都可以直接登录，而不用再输入身份和口令</h3>
 <h3 id="工作流程-5">工作流程：</h3>
-<p><img src="https://s1.ax1x.com/2020/07/09/UeWghQ.png" alt="image-20200702224617714"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/KidoThunder/images/imagesUeWghQ.png" alt="image-20200702224617714"></p>
 <ul>
 <li>
 <ol>
@@ -651,11 +651,11 @@
   <div class="qr-code">
     
     <label class="qr-code-image" for="reward">
-        <img class="image" src="https://s1.ax1x.com/2020/07/13/UJaoxH.png">
+        <img class="image" src="https://cdn.jsdelivr.net/gh/KidoThunder/images/imageswx.png">
         <span>微信打赏</span>
       </label>
     <label class="qr-code-image" for="reward">
-        <img class="image" src="https://s1.ax1x.com/2020/07/13/UJa7Md.png">
+        <img class="image" src="https://cdn.jsdelivr.net/gh/KidoThunder/images/imageszfb.png">
         <span>支付宝打赏</span>
       </label>
   </div>
