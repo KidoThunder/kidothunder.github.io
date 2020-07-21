@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>利用Github &#43; JsDelivr &#43; PicGo实现自建图床 - Kido&#39;s Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Kido" /><meta name="description" content="前言： 使用图床（Image Hosting）是我在写文章的流程当中非常重要的一部分。 我使用的博客引擎是Hugo，首先用Hugo生成出来一个Ma" /><meta name="keywords" content="Hugo, theme, even, blog, technech" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.71.0 with theme even" />
+
+
+<link rel="canonical" href="https://kidothunder.github.io/post/%E5%88%A9%E7%94%A8github-&#43;-jsdelivr-&#43;-picgo%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%BB%BA%E5%9B%BE%E5%BA%8A/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.e23b16f70676ed692f169c65f07230cd9d3e790a4b5b15dc32b1ee36e7604994.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="利用Github &#43; JsDelivr &#43; PicGo实现自建图床" />
+<meta property="og:description" content="前言： 使用图床（Image Hosting）是我在写文章的流程当中非常重要的一部分。 我使用的博客引擎是Hugo，首先用Hugo生成出来一个Ma" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kidothunder.github.io/post/%E5%88%A9%E7%94%A8github-&#43;-jsdelivr-&#43;-picgo%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%BB%BA%E5%9B%BE%E5%BA%8A/" />
+<meta property="article:published_time" content="2020-07-21T10:41:09+08:00" />
+<meta property="article:modified_time" content="2020-07-21T10:41:09+08:00" />
+<meta itemprop="name" content="利用Github &#43; JsDelivr &#43; PicGo实现自建图床">
+<meta itemprop="description" content="前言： 使用图床（Image Hosting）是我在写文章的流程当中非常重要的一部分。 我使用的博客引擎是Hugo，首先用Hugo生成出来一个Ma">
+<meta itemprop="datePublished" content="2020-07-21T10:41:09&#43;08:00" />
+<meta itemprop="dateModified" content="2020-07-21T10:41:09&#43;08:00" />
+<meta itemprop="wordCount" content="2440">
+
+
+
+<meta itemprop="keywords" content="Github,JsDelivr,Image Hosting," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="利用Github &#43; JsDelivr &#43; PicGo实现自建图床"/>
+<meta name="twitter:description" content="前言： 使用图床（Image Hosting）是我在写文章的流程当中非常重要的一部分。 我使用的博客引擎是Hugo，首先用Hugo生成出来一个Ma"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Kido&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Kido&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">利用Github &#43; JsDelivr &#43; PicGo实现自建图床</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-07-21 </span>
+        <div class="post-category">
+            <a href="/categories/tech/"> Tech </a>
+            <a href="/categories/tools/"> Tools </a>
+            </div>
+          <span class="more-meta"> 约 2440 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言：</a></li>
+    <li><a href="#创建github仓库及相应配置">创建Github仓库及相应配置</a></li>
+    <li><a href="#上传测试">上传测试</a></li>
+    <li><a href="#为typora进行配置">为Typora进行配置</a></li>
+    <li><a href="#优化图片存储空间">优化图片存储空间</a></li>
+    <li><a href="#配置github-action自动合并pull-request">配置Github Action，自动合并Pull Request</a></li>
+    <li><a href="#小结">小结</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="前言">前言：</h2>
+<p>使用图床（Image Hosting）是我在写文章的流程当中非常重要的一部分。</p>
+<p>我使用的博客引擎是<a href="https://gohugo.io/">Hugo</a>，首先用Hugo生成出来一个Markdown的模版文件，比如<code>new_article.md</code>，然后用<a href="https://typora.io/">Typroa</a>打开这个文件，接着在其中进行撰写，在写的时候，就会有许多需要插入图片的需求，这时候就会比较痛苦，有的时候是截图，有的时候是网图，还有可能是本地图片，这些图片在最终发布的时候都是需要上传到一个托管服务，之前一直用的是<a href="https://imgchr.com/">路过图床</a>，但是上传图片及复制链接插入的过程还是很痛苦，一直没有很好的解决办法。后面有一天，我在Typora中发现了一个功能，在我嵌入图片的时候，菜单中有一个上传图片的按钮，如图所示：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KidoThunder/images/images20200721111226.png" alt="image-20200721111224320"></p>
+<p>然后在Typora的偏好设置中发现了<a href="https://github.com/Molunerfinn/PicGo">PicGo</a>: 一个优秀的图片上传工具。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KidoThunder/images/images20200721111556.png" alt="image-20200721111555011"></p>
+<p>接下来下载了PicGo的应用，在配置中看到了Github 图床：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KidoThunder/images/images20200721111849.png" alt="image-20200721111848578"></p>
+<p>于是就决定使用Github来做图片的托管服务。</p>
+<h2 id="创建github仓库及相应配置">创建Github仓库及相应配置</h2>
+<p>创建一个名为images的仓库用来存储图片，因为我已经创建过了，所以显示已存在。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KidoThunder/images/images20200721112846.png" alt="image-20200721112844590"></p>
+<p>接下来进行配置，打开PicGo的应用，在Github的配置项中进行配置：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KidoThunder/images/images20200721113354.png" alt="image-20200721113352612"></p>
+<p>其中，Token是Github的<a href="https://github.com/settings/tokens">PersonalAccessToken</a>，在里面生成一个拥有images仓库写读权限的Token，然后复制到配置框中。</p>
+<p>另一个自定义域名我没有使用Github的访问路径域名，是因为如果在国内的话，Github的访问速度有时经常抽风，所以考虑这个问题，也去看了一些资料，有一些人会使用<a href="https://gitee.com/">Gitee</a>来同步Github库的图片文件，然后使用Gitee的域名来访问，但是这样只是解决了国内的问题，如果想让图片在全球范围内都拥有良好的访问速度，那就必须上CDN，这时候发现了<a href="https://www.jsdelivr.com/">JsDelivr</a>，一个开源免费的CDN服务，天然的支持Github，以及npm和wordpress的内容托管，它提供了在全球范围内的内容加速，更重要的是提供了<em>Works in China</em>，使用起来也非常的简单明了，就选用它做了图片的托管服务。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KidoThunder/images/images20200721114505.png" alt="image-20200721114503054"></p>
+<p>图为JsDelivr在全球范围内的节点分布。</p>
+<p>然后将包含你自己对应的Github信息及仓库信息的JsDeliver链接填入到PicGo的Github配置当中，这一步的配置就完成了。</p>
+<h2 id="上传测试">上传测试</h2>
+<p>打开你的PicGo应用，打开到上传区，然后随便拖入一张图片，或者截图，使用剪切板图片，进行上传测试：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KidoThunder/images/images20200721115046.png" alt="image-20200721115044846"></p>
+<p>如果能够成功上传图片，而且上传成功后图片的链接是JsDelivr而且能够成功打开，那么最重要的一步就完成了。</p>
+<h2 id="为typora进行配置">为Typora进行配置</h2>
+<p>打开Typora的偏好设置，在Image Upload Setting中下拉框中选择PicGo.app，如果选择其他的也可以，需要自己再研究配置。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KidoThunder/images/images20200721150528.png" alt="image-20200721150526945"></p>
+<p>点击Test Uploader如果PicGo提示成功则配置，以后在使用Typora的时候就可以在插入图片的时候使用前文之前提到的一键上传功能了，并且可以自动将原来的图片链接替换为上传成功之后的JsDelivr的地址。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KidoThunder/images/images20200721155410.png" alt="image-20200721155408125"></p>
+<h2 id="优化图片存储空间">优化图片存储空间</h2>
+<p>虽然Github仓库大小没有限制，但是官方仍然推荐保持仓库在1GB以下。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KidoThunder/images/images20200721155800.png" alt="image-20200721155759148"></p>
+<p>所以我们需要尽可能地在不降低图片质量的图片下，让图片变得更小，这时候我们就要用到一个第三方的工具，<a href="https://github.com/marketplace/imgbot">ImageBot</a>，打开之后选择Set up a plan。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KidoThunder/images/images20200721171356.png" alt="image-20200721171349166"></p>
+<p>接着选择Open source，然后选择Install it for free。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KidoThunder/images/images20200721171713.png" alt="image-20200721171711583"></p>
+<p>接下来完成订单并开始安装，并允许ImgBot对你的Github账户的OAuth授权，即可安装完成。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KidoThunder/images/images20200721171821.png" alt="image-20200721171819670"></p>
+<p>安装完成后，可以为所有仓库或者单独的一个仓库配置ImgBot，也可以在新建仓库的时候配置ImgBot。</p>
+<p>配置完成之后，只要你的仓库中存在图片，ImgBot就回去递归的查找当前仓库中的图片，然后对其进行优化，当然这指的是无损压缩，当然想要有损压缩的话，可以自己对ImgBot的参数配置调整。</p>
+<p>一段时间后，当你发现image仓库有新的Pull Request，如果是这样的话，那么ImgBot就是在正常工作了。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KidoThunder/images/images20200721172718.png" alt="image-20200721172716817"></p>
+<p>这一步的配置就完成了，接下来我们来进行下一步。</p>
+<h2 id="配置github-action自动合并pull-request">配置Github Action，自动合并Pull Request</h2>
+<p>接上一步，ImgBot向我们的image仓库提了PR，那我们就需要对其进行合并，一次两次还好，但是每次都要我们手动去点，是不是太麻烦了，这时候使用Github自带的Action功能来做自动化操作这样就讲我们的双手解放出来了。</p>
+<p>先进入我们的image仓库，选择Action标签，如图：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KidoThunder/images/images20200721173408.png" alt="image-20200721173300362"></p>
+<p>如果之前没有配置过的话，就点击set up a workflow yourself。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KidoThunder/images/images20200721173611.png" alt="image-20200721173609517"></p>
+<p>然后对Yaml脚本进行配置然后保存：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KidoThunder/images/images20200721175600.png" alt="image-20200721175558435"></p>
+<p>脚本中的 uses 值为 <code>pascalgn/automerge-action</code>，它是一个autumerge的<a href="https://github.com/pascalgn/automerge-action">仓库</a>，后面的v0.8.4为它最新的release版本。</p>
+<p>文件中使用的代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">name: Merge Imgbot
+
+on:
+  pull_request:
+    types:
+      - opened
+      - ready_for_review
+  pull_request_review:
+    types:
+      - submitted
+  status: {}
+
+jobs:
+  automerge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: automerge
+        uses: &#34;pascalgn/automerge-action@v0.8.4&#34;
+        env:
+          GITHUB_TOKEN: &#34;${{ secrets.GIT_MERGE_TOKEN }}&#34;
+          MERGE_LABELS: &#34;&#34;
+          MERGE_METHOD: &#34;squash&#34;
+          MERGE_COMMIT_MESSAGE: &#34;pull-request-description&#34;
+          MERGE_FORKS: &#34;false&#34;
+          MERGE_RETRIES: &#34;2&#34;
+          MERGE_RETRY_SLEEP: &#34;10000&#34;
+          UPDATE_METHOD: &#34;rebase&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>脚本中的 <code>GIT_MERGE_TOKEN</code>这个值需要在Github的Token页进行生成，与PicGo配置Github时操作一致，配置完成之后，还没有完成，因为它是一个密钥值不能暴露出去，所以需要在Secrets中额外进行配置，在image仓库选择Settings，点击Secrets。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KidoThunder/images/images20200721175920.png" alt="image-20200721174757484"></p>
+<p>在这里将生成的Token填写进去，命名为<code>GIT_MERGE_TOKEN</code>，然后在Yaml脚本中通过<code>${{ secrets.GIT_MERGE_TOKEN }}</code>就可以获取到这个值了。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KidoThunder/images/images20200721175937.png" alt="image-20200721174913248"></p>
+<p>接下来，就可以进行测试了，在上传一张图片之后，ImgBot发起了一个PR后，如果Action能够自动合并该PR，那么配置就是正确无误的。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/KidoThunder/images/images20200721175949.png" alt="image-20200721175231126"></p>
+<p>到此，我们的个人图床就配置完成了。</p>
+<h2 id="小结">小结</h2>
+<p>在配置的过程中，也踩了不少的坑，也接触到学习了很多新的东西，比如CDN、Github Actions等等，而且个人图床在实际使用过程中非常方便，在写文档、写文章的时候再也不用因为图片上传而浪费很多时间了，这件事情我觉得是有价值的，也希望对你也有帮助。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Kido</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-07-21
+        
+    </span>
+  </p>
+  
+  
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://cdn.jsdelivr.net/gh/KidoThunder/images/imageswx.png">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://cdn.jsdelivr.net/gh/KidoThunder/images/imageszfb.png">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/github/">Github</a>
+          <a href="/tags/jsdelivr/">JsDelivr</a>
+          <a href="/tags/image-hosting/">Image Hosting</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%8E%88%E6%9D%83/">
+            <span class="next-text nav-default">认证与授权</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:zgdisgod@hotmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/KidoThunder" class="iconfont icon-github" title="github"></a>
+  <a href="https://kidothunder.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Kido</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-172136950-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>
