@@ -2,66 +2,66 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Kido&#39;s Blog</title>
-    <link>https://kidothunder.github.io/tags/</link>
+    <link>https://blog.zkido.cc/tags/</link>
     <description>Recent content in Tags on Kido&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 21 Jul 2020 10:41:09 +0800</lastBuildDate>
     
-	<atom:link href="https://kidothunder.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.zkido.cc/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Github</title>
-      <link>https://kidothunder.github.io/tags/github/</link>
+      <link>https://blog.zkido.cc/tags/github/</link>
       <pubDate>Tue, 21 Jul 2020 10:41:09 +0800</pubDate>
       
-      <guid>https://kidothunder.github.io/tags/github/</guid>
+      <guid>https://blog.zkido.cc/tags/github/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Image Hosting</title>
-      <link>https://kidothunder.github.io/tags/image-hosting/</link>
+      <link>https://blog.zkido.cc/tags/image-hosting/</link>
       <pubDate>Tue, 21 Jul 2020 10:41:09 +0800</pubDate>
       
-      <guid>https://kidothunder.github.io/tags/image-hosting/</guid>
+      <guid>https://blog.zkido.cc/tags/image-hosting/</guid>
       <description></description>
     </item>
     
     <item>
       <title>JsDelivr</title>
-      <link>https://kidothunder.github.io/tags/jsdelivr/</link>
+      <link>https://blog.zkido.cc/tags/jsdelivr/</link>
       <pubDate>Tue, 21 Jul 2020 10:41:09 +0800</pubDate>
       
-      <guid>https://kidothunder.github.io/tags/jsdelivr/</guid>
+      <guid>https://blog.zkido.cc/tags/jsdelivr/</guid>
       <description></description>
     </item>
     
     <item>
       <title>API</title>
-      <link>https://kidothunder.github.io/tags/api/</link>
+      <link>https://blog.zkido.cc/tags/api/</link>
       <pubDate>Thu, 09 Jul 2020 10:47:03 +0800</pubDate>
       
-      <guid>https://kidothunder.github.io/tags/api/</guid>
+      <guid>https://blog.zkido.cc/tags/api/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Authentication</title>
-      <link>https://kidothunder.github.io/tags/authentication/</link>
+      <link>https://blog.zkido.cc/tags/authentication/</link>
       <pubDate>Thu, 09 Jul 2020 10:47:03 +0800</pubDate>
       
-      <guid>https://kidothunder.github.io/tags/authentication/</guid>
+      <guid>https://blog.zkido.cc/tags/authentication/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Authorization</title>
-      <link>https://kidothunder.github.io/tags/authorization/</link>
+      <link>https://blog.zkido.cc/tags/authorization/</link>
       <pubDate>Thu, 09 Jul 2020 10:47:03 +0800</pubDate>
       
-      <guid>https://kidothunder.github.io/tags/authorization/</guid>
+      <guid>https://blog.zkido.cc/tags/authorization/</guid>
       <description></description>
     </item>
     

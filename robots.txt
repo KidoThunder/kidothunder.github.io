@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://kidothunder.github.io/sitemap.xml
+Sitemap: https://blog.zkido.cc/sitemap.xml
