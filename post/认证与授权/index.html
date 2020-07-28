@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Kido" /><meta name="description" content="前言：最近有空翻了翻技术的RoadMap，发现自己在认证和授权这块很多概念比较模糊，于是大致就整理分析了下，全文如下。 为什么我们需要认证？ 因" /><meta name="keywords" content="Hugo, theme, even, blog, technech" />
+<meta name="author" content="Kido" /><meta name="description" content="前言： 最近有空翻了翻技术的RoadMap，发现自己在认证和授权这块很多概念比较模糊，于是大致就整理分析了下，全文如下。 为什么我们需要认证？ 因" /><meta name="keywords" content="Hugo, theme, even, blog, technech" />
 
 
 
@@ -40,22 +40,22 @@
 
 
 <meta property="og:title" content="认证与授权" />
-<meta property="og:description" content="前言：最近有空翻了翻技术的RoadMap，发现自己在认证和授权这块很多概念比较模糊，于是大致就整理分析了下，全文如下。 为什么我们需要认证？ 因" />
+<meta property="og:description" content="前言： 最近有空翻了翻技术的RoadMap，发现自己在认证和授权这块很多概念比较模糊，于是大致就整理分析了下，全文如下。 为什么我们需要认证？ 因" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.zkido.cc/post/%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%8E%88%E6%9D%83/" />
 <meta property="article:published_time" content="2020-07-09T10:47:03+08:00" />
 <meta property="article:modified_time" content="2020-07-09T10:47:03+08:00" />
 <meta itemprop="name" content="认证与授权">
-<meta itemprop="description" content="前言：最近有空翻了翻技术的RoadMap，发现自己在认证和授权这块很多概念比较模糊，于是大致就整理分析了下，全文如下。 为什么我们需要认证？ 因">
+<meta itemprop="description" content="前言： 最近有空翻了翻技术的RoadMap，发现自己在认证和授权这块很多概念比较模糊，于是大致就整理分析了下，全文如下。 为什么我们需要认证？ 因">
 <meta itemprop="datePublished" content="2020-07-09T10:47:03&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-09T10:47:03&#43;08:00" />
-<meta itemprop="wordCount" content="3889">
+<meta itemprop="wordCount" content="3880">
 
 
 
 <meta itemprop="keywords" content="Authentication,Authorization,API," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="认证与授权"/>
-<meta name="twitter:description" content="前言：最近有空翻了翻技术的RoadMap，发现自己在认证和授权这块很多概念比较模糊，于是大致就整理分析了下，全文如下。 为什么我们需要认证？ 因"/>
+<meta name="twitter:description" content="前言： 最近有空翻了翻技术的RoadMap，发现自己在认证和授权这块很多概念比较模糊，于是大致就整理分析了下，全文如下。 为什么我们需要认证？ 因"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/tech/"> Tech </a>
             </div>
-          <span class="more-meta"> 约 3889 字 </span>
+          <span class="more-meta"> 约 3880 字 </span>
           <span class="more-meta"> 预计阅读 8 分钟 </span>
         
       </div>
@@ -140,25 +140,11 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
-    <li>
-      <ul>
-        <li><a href="#前言最近有空翻了翻技术的roadmap发现自己在认证和授权这块很多概念比较模糊于是大致就整理分析了下全文如下">前言：最近有空翻了翻技术的RoadMap，发现自己在认证和授权这块很多概念比较模糊，于是大致就整理分析了下，全文如下。</a></li>
-      </ul>
-    </li>
-    <li><a href="#为什么我们需要认证">为什么我们需要认证？</a>
-      <ul>
-        <li><a href="#因为http是无状态的于是为了追踪用户想出来很多方法包括-cookiesession-机制tokenflash-跨浏览器-cookiehttpcxhme20141125flash-shared-cookie甚至浏览器指纹等">因为HTTP是无状态的，于是为了追踪用户想出来很多方法，包括 cookie/session 机制、token、<a href="http://cxh.me/2014/11/25/flash-shared-cookie/">flash 跨浏览器 cookie</a>甚至浏览器指纹等。</a></li>
-      </ul>
-    </li>
-    <li><a href="#认证是什么和授权的关系">认证是什么？和授权的关系？</a>
-      <ul>
-        <li><a href="#认证是-authentication指的是当用户登陆过后系统便能追踪到他的身份做出符合相应业务逻辑的操作即使用户没有登录大多数系统也会追踪他的身份只是当做来宾或者匿名用户来处理认证技术解决的是-我是谁的问题">认证是 Authentication，指的是、当用户登陆过后系统便能追踪到他的身份做出符合相应业务逻辑的操作。即使用户没有登录，大多数系统也会追踪他的身份，只是当做来宾或者匿名用户来处理。认证技术解决的是 “我是谁？”的问题。</a></li>
-        <li><a href="#授权是-authorization指的是什么样的身份被允许访问某些资源在获取到用户身份后继续检查用户的权限单一的系统授权往往是伴随认证来完成的但是在开放-api-的多系统结构下授权可以由不同的系统来完成例如-oauth授权技术是解决我能做什么的问题">授权是 Authorization，指的是什么样的身份被允许访问某些资源，在获取到用户身份后继续检查用户的权限。单一的系统授权往往是伴随认证来完成的，但是在开放 API 的多系统结构下，授权可以由不同的系统来完成，例如 OAuth。授权技术是解决“我能做什么？”的问题。</a></li>
-      </ul>
-    </li>
+    <li><a href="#前言">前言：</a></li>
+    <li><a href="#为什么我们需要认证">为什么我们需要认证？</a></li>
+    <li><a href="#认证是什么和授权的关系">认证是什么？和授权的关系？</a></li>
     <li><a href="#cookie-based-authentication">Cookie Based Authentication</a>
       <ul>
-        <li><a href="#基于cookie的认证方式每个请求里携带cookie信息以便于服务器进行识别">基于cookie的认证方式，每个请求里携带cookie信息以便于服务器进行识别</a></li>
         <li><a href="#工作流程">工作流程：</a></li>
         <li><a href="#缺点">缺点：</a></li>
       </ul>
@@ -172,46 +158,28 @@
     </li>
     <li><a href="#token-based-authentication">Token Based Authentication</a>
       <ul>
-        <li><a href="#基于token的认证在每个请求中携带被签名过的token信息传送到服务端"><strong>基于Token的认证</strong>，在每个请求中携带被签名过的Token信息传送到服务端</a></li>
         <li><a href="#工作流程-2">工作流程：</a></li>
         <li><a href="#缺点-2">缺点：</a></li>
       </ul>
     </li>
     <li><a href="#jwt-based-authentication">JWT Based Authentication</a>
       <ul>
-        <li><a href="#基于jwt-token的认证方式由于一些信息比如用户-id过期等信息不需要再外部存储中关联因此业界对-token-做了进一步优化设计了一种自包含令牌令牌签发后无需从服务器存储中检查是否合法通过解析令牌就能获取令牌的过期有效等信息这就是jwt-json-web-token">基于JWT token的认证方式，由于一些信息，比如用户 ID、过期等信息，不需要再外部存储中关联。因此业界对 token 做了进一步优化，设计了一种自包含令牌，令牌签发后无需从服务器存储中检查是否合法，通过解析令牌就能获取令牌的过期、有效等信息，这就是JWT （JSON Web Token）</a></li>
-        <li><a href="#一般的一个基本的jwt令牌为一段点分3段式结构">一般的，一个基本的JWT令牌为一段点分3段式结构</a></li>
         <li><a href="#生成jwt的流程">生成JWT的流程：</a></li>
         <li><a href="#缺点-3">缺点：</a></li>
       </ul>
     </li>
     <li><a href="#oauth">OAuth</a>
       <ul>
-        <li><a href="#oauthhttpenwikipediaorgwikioauthopen-authorization是一个关于授权authorization的开放网络标准而不是认证标准提供资源的服务器不需要知道确切的用户身份session只需要验证授权服务器授予的权限token即可目前的版本是20版"><a href="http://en.wikipedia.org/wiki/OAuth">OAuth</a>（Open Authorization）是一个关于授权（authorization）的开放网络标准，而不是认证标准，提供资源的服务器不需要知道确切的用户身份（session），只需要验证授权服务器授予的权限（token）即可，目前的版本是2.0版</a></li>
-        <li><a href="#oauth-在客户端与服务提供商之间设置了一个-授权层authorization--layer客户端不能直接登录服务提供商只能登录授权层以此将用户与客户端区分开来客户端登录授权层所用的令牌token与用户的密码不同用户可以在登录的时候指定授权层令牌的权限范围和有效期">OAuth 在客户端与服务提供商之间，设置了一个 <strong>授权层</strong>（authorization  layer）。客户端不能直接登录服务提供商，只能登录授权层，以此将用户与客户端区分开来。客户端登录授权层所用的令牌（token），与用户的密码不同。用户可以在登录的时候，指定授权层令牌的权限范围和有效期</a></li>
-        <li><a href="#客户端登录授权层以后服务提供商根据令牌的权限范围和有效期向客户端开放用户储存的资料">客户端登录授权层以后，服务提供商根据令牌的权限范围和有效期，向客户端开放用户储存的资料</a></li>
-        <li><a href="#oauth-负责解决分布式系统之间的授权问题即使有时候客户端和资源服务器或者认证服务器存在同一台机器上oauth-没有解决认证的问题但提供了良好的设计利于和现有的认证系统对接">OAuth 负责解决分布式系统之间的授权问题，即使有时候客户端和资源服务器或者认证服务器存在同一台机器上。OAuth 没有解决认证的问题，但提供了良好的设计利于和现有的认证系统对接</a></li>
         <li><a href="#工作流程-3">工作流程：</a></li>
-        <li><a href="#上述流程中第二步是关键就是用户如何给客户端授权有了授权之后客户端就可以获取令牌进而获取资源">上述流程中，第二步是关键，就是用户如何给客户端授权，有了授权之后，客户端就可以获取令牌，进而获取资源</a></li>
-        <li><a href="#通常有四种授权方式httpswwwruanyifengcomblog201904oauth-grant-typeshtml">通常有<a href="https://www.ruanyifeng.com/blog/2019/04/oauth-grant-types.html">四种授权方式</a>：</a></li>
-        <li><a href="#授权码方式authorization-code">授权码方式（authorization code）</a></li>
-        <li><a href="#简化方式implicit">简化方式（implicit）</a></li>
-        <li><a href="#密码方式resource-owner-password-credentials">密码方式（resource owner password credentials）</a></li>
-        <li><a href="#客户端方式client-credentials">客户端方式（client credentials）</a></li>
       </ul>
     </li>
     <li><a href="#openid-authentication">OpenID Authentication</a>
       <ul>
-        <li><a href="#openid是一个去中心化httpszhwikipediaorgwiki去中心化的网上身份认证httpszhwikipediaorgwiki数字身份系统对于支持openid的网站用户不需要记住像用户名和密码这样的传统验证标记取而代之的是他们只需要预先在一个作为openid身份提供者identity-provider-idp的服务进行注册">OpenID是一个<a href="https://zh.wikipedia.org/wiki/%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96">去中心化</a>的网上<a href="https://zh.wikipedia.org/wiki/%E6%95%B0%E5%AD%97%E8%BA%AB%E4%BB%BD">身份认证</a>系统。对于支持OpenID的网站，用户不需要记住像用户名和密码这样的传统验证标记。取而代之的是，他们只需要预先在一个作为OpenID身份提供者（identity provider, IdP）的服务进行注册</a></li>
-        <li><a href="#如果要访问各种实体例如web-站点通常需要与每个实体关联的唯一帐戸openid-可使由-openid-提供者处理的一组凭证授予对支持-openid-的任何数目的实体的访问权">如果要访问各种实体（例如Web 站点），通常需要与每个实体关联的唯一帐戸。OpenID 可使由 OpenID 提供者处理的一组凭证授予对支持 OpenID 的任何数目的实体的访问权</a></li>
-        <li><a href="#要求用户登录到某个支持-openid-并充当依赖方的实体例如web-站点时用户通过直接与-openid-提供者进行交互而不是向-依赖方rp-提供其凭证来进行认证openid-提供者验证用户身份并将认证确认信息发送回-rp从-openid-提供者收到此确认信息时rp-会将用户作为已认证用户接受">要求用户登录到某个支持 OpenID 并充当依赖方的实体（例如Web 站点）时，用户通过直接与 OpenID 提供者进行交互而不是向 依赖方（RP ）提供其凭证来进行认证。OpenID 提供者验证用户身份，并将认证确认信息发送回 RP。从 OpenID 提供者收到此确认信息时，RP 会将用户作为已认证用户接受</a></li>
         <li><a href="#工作流程-4">工作流程：</a></li>
       </ul>
     </li>
     <li><a href="#saml">SAML</a>
       <ul>
-        <li><a href="#saml全称为security-assertion-markup-language是一种用于安全性断言的标记语言目前的最新版本是20"><strong>SAML</strong>，全称为<em>Security Assertion Markup Language</em>，是一种用于安全性断言的标记语言，目前的最新版本是2.0</a></li>
-        <li><a href="#saml在单点登录中大有用处在saml协议中一旦用户身份被主网站身份鉴别服务器identity-provideridp认证过后该用户再去访问其他在主站注册过的应用服务提供者service-providerssp时都可以直接登录而不用再输入身份和口令">SAML在单点登录中大有用处：在<em>SAML</em>协议中，一旦用户身份被主网站（身份鉴别服务器，Identity Provider，<em>IDP</em>）认证过后，该用户再去访问其他在主站注册过的应用（服务提供者，Service Providers，<em>SP</em>）时，都可以直接登录，而不用再输入身份和口令</a></li>
         <li><a href="#工作流程-5">工作流程：</a></li>
       </ul>
     </li>
@@ -220,24 +188,25 @@
   </div>
 </div>
     <div class="post-content">
-      <h3 id="前言最近有空翻了翻技术的roadmap发现自己在认证和授权这块很多概念比较模糊于是大致就整理分析了下全文如下">前言：最近有空翻了翻技术的RoadMap，发现自己在认证和授权这块很多概念比较模糊，于是大致就整理分析了下，全文如下。</h3>
+      <h2 id="前言">前言：</h2>
+<p>最近有空翻了翻技术的RoadMap，发现自己在认证和授权这块很多概念比较模糊，于是大致就整理分析了下，全文如下。</p>
 <h2 id="为什么我们需要认证">为什么我们需要认证？</h2>
-<h3 id="因为http是无状态的于是为了追踪用户想出来很多方法包括-cookiesession-机制tokenflash-跨浏览器-cookiehttpcxhme20141125flash-shared-cookie甚至浏览器指纹等">因为HTTP是无状态的，于是为了追踪用户想出来很多方法，包括 cookie/session 机制、token、<a href="http://cxh.me/2014/11/25/flash-shared-cookie/">flash 跨浏览器 cookie</a>甚至浏览器指纹等。</h3>
+<p>因为HTTP是无状态的，于是为了追踪用户想出来很多方法，包括 cookie/session 机制、token、<a href="http://cxh.me/2014/11/25/flash-shared-cookie/">flash 跨浏览器 cookie</a>甚至浏览器指纹等。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/KidoThunder/images/imagesUeWEwT.png" alt="image-20200702213420870"></p>
 <h2 id="认证是什么和授权的关系">认证是什么？和授权的关系？</h2>
-<h3 id="认证是-authentication指的是当用户登陆过后系统便能追踪到他的身份做出符合相应业务逻辑的操作即使用户没有登录大多数系统也会追踪他的身份只是当做来宾或者匿名用户来处理认证技术解决的是-我是谁的问题">认证是 Authentication，指的是、当用户登陆过后系统便能追踪到他的身份做出符合相应业务逻辑的操作。即使用户没有登录，大多数系统也会追踪他的身份，只是当做来宾或者匿名用户来处理。认证技术解决的是 “我是谁？”的问题。</h3>
-<h3 id="授权是-authorization指的是什么样的身份被允许访问某些资源在获取到用户身份后继续检查用户的权限单一的系统授权往往是伴随认证来完成的但是在开放-api-的多系统结构下授权可以由不同的系统来完成例如-oauth授权技术是解决我能做什么的问题">授权是 Authorization，指的是什么样的身份被允许访问某些资源，在获取到用户身份后继续检查用户的权限。单一的系统授权往往是伴随认证来完成的，但是在开放 API 的多系统结构下，授权可以由不同的系统来完成，例如 OAuth。授权技术是解决“我能做什么？”的问题。</h3>
+<p>认证是 Authentication，指的是、当用户登陆过后系统便能追踪到他的身份做出符合相应业务逻辑的操作。即使用户没有登录，大多数系统也会追踪他的身份，只是当做来宾或者匿名用户来处理。认证技术解决的是 “我是谁？”的问题。</p>
+<p>授权是 Authorization，指的是什么样的身份被允许访问某些资源，在获取到用户身份后继续检查用户的权限。单一的系统授权往往是伴随认证来完成的，但是在开放 API 的多系统结构下，授权可以由不同的系统来完成，例如 OAuth。授权技术是解决“我能做什么？”的问题。</p>
 <h2 id="cookie-based-authentication">Cookie Based Authentication</h2>
-<h3 id="基于cookie的认证方式每个请求里携带cookie信息以便于服务器进行识别">基于cookie的认证方式，每个请求里携带cookie信息以便于服务器进行识别</h3>
+<p>基于cookie的认证方式，每个请求里携带cookie信息以便于服务器进行识别</p>
 <h3 id="工作流程">工作流程：</h3>
 <p>​	<img src="https://cdn.jsdelivr.net/gh/KidoThunder/images/imagesUeW0Xt.png" alt="image-20200702213611987"></p>
-<ul>
-<li>1.用户输入用户名和密码，发送给服务器</li>
-<li>2.服务器验证用户名和密码，正确的话创建一个会话（Session）</li>
-<li>3.服务器将SessionID保存到客户端浏览器中（一般使用set-cookie 方法），因为保存的地方是浏览器的Cookie，所以这个认证方式被称为Cookie Based</li>
-<li>4.后续浏览器发送SessionID到服务器，服务器若能找到对应Session，那么服务器就会正确响应</li>
-<li>5.当用户退出登陆，session 会在服务端和客户端同时被销毁</li>
-</ul>
+<ol>
+<li>用户输入用户名和密码，发送给服务器</li>
+<li>服务器验证用户名和密码，正确的话创建一个会话（Session）</li>
+<li>服务器将SessionID保存到客户端浏览器中（一般使用set-cookie 方法），因为保存的地方是浏览器的Cookie，所以这个认证方式被称为Cookie Based</li>
+<li>后续浏览器发送SessionID到服务器，服务器若能找到对应Session，那么服务器就会正确响应</li>
+<li>当用户退出登陆，session 会在服务端和客户端同时被销毁</li>
+</ol>
 <h3 id="缺点">缺点：</h3>
 <ul>
 <li>cookie 能很好的处理单域和子域，但是遇到跨域的问题就会变得难以处理</li>
@@ -247,76 +216,44 @@
 <p><img src="https://cdn.jsdelivr.net/gh/KidoThunder/images/imagesUeWs78-20200720162258170.png" alt="image-20200702214303488"></p>
 <h3 id="工作流程-1">工作流程：</h3>
 <p><img src="https://cdn.jsdelivr.net/gh/KidoThunder/images/imagesUeWDnP-20200720162245898.png" alt="image-20200702214509125"></p>
-<ul>
-<li>
 <ol>
 <li>组合用户名和密码然后 Base64 编码</li>
-</ol>
-</li>
-<li>
-<ol start="2">
 <li>给编码后的字符串添加 Basic 前缀，然后设置名称为 Authorization 的 header 头部</li>
 </ol>
-</li>
-</ul>
 <h3 id="api-的使用方式">API 的使用方式：</h3>
-<ul>
-<li>
 <ol>
 <li>将用户名和密码使用冒号连接，例如 username:kido123456</li>
-</ol>
-</li>
-<li>
-<ol start="2">
 <li>为了防止用户名或者密码中存在超出 ASCII 码范围的字符，推荐使用UTF-8编码</li>
-</ol>
-</li>
-<li>
-<ol start="3">
 <li>将上面的字符串使用 Base 64 编码，例如 dXNlcm5hbWU6a2lkbzEyMzQ1Ng==</li>
-</ol>
-</li>
-<li>
-<ol start="4">
 <li>在 HTTP 请求头中加入 “Basic + 编码后的字符串”，即：Authorization: Basic dXNlcm5hbWU6a2lkbzEyMzQ1Ng==</li>
 </ol>
-</li>
-</ul>
 <h3 id="缺点-1">缺点：</h3>
 <p>编码后的密码如果明文传输则容易在网络传输中泄露，在密码不会过期的情况下，密码一旦泄露，只能通过修改密码的方式</p>
 <h2 id="token-based-authentication">Token Based Authentication</h2>
-<h3 id="基于token的认证在每个请求中携带被签名过的token信息传送到服务端"><strong>基于Token的认证</strong>，在每个请求中携带被签名过的Token信息传送到服务端</h3>
+<p><strong>基于Token的认证</strong>，在每个请求中携带被签名过的Token信息传送到服务端</p>
 <h3 id="工作流程-2">工作流程：</h3>
 <p><img src="https://cdn.jsdelivr.net/gh/KidoThunder/images/imagesUeWw6I.png" alt="image-20200702215937176"></p>
-<ul>
-<li>
 <ol>
-<li>用户输入用户名密码，发送给服务器</li>
-</ol>
+<li>
+<p>用户输入用户名密码，发送给服务器</p>
 </li>
 <li>
-<ol start="2">
-<li>服务器验证一下用户名和密码，正确的话就返回一个签名过的 token（ token 可以认为就是个长长的字符串）给客户端</li>
-</ol>
+<p>服务器验证一下用户名和密码，正确的话就返回一个签名过的 token（ token 可以认为就是个长长的字符串）给客户端</p>
 </li>
 <li>
-<ol start="3">
-<li>后续每次请求中，浏览器会把 token 作为 http header 中的一部分发送给服务器</li>
-</ol>
+<p>后续每次请求中，浏览器会把 token 作为 http header 中的一部分发送给服务器</p>
 </li>
 <li>
-<ol start="4">
-<li>服务器可以验证一下签名是否有效，如果有效那么认证就成功了，可以返回客户端需要的数据</li>
-</ol>
+<p>服务器可以验证一下签名是否有效，如果有效那么认证就成功了，可以返回客户端需要的数据</p>
 </li>
-</ul>
+</ol>
 <h3 id="缺点-2">缺点：</h3>
 <ul>
 <li>token 最大的缺点就是它的大小，最小的它都比 cookie 要大，如果 token 中包含很多声明，向服务器发送的每个请求都要有这个 token</li>
 </ul>
 <h2 id="jwt-based-authentication">JWT Based Authentication</h2>
-<h3 id="基于jwt-token的认证方式由于一些信息比如用户-id过期等信息不需要再外部存储中关联因此业界对-token-做了进一步优化设计了一种自包含令牌令牌签发后无需从服务器存储中检查是否合法通过解析令牌就能获取令牌的过期有效等信息这就是jwt-json-web-token">基于JWT token的认证方式，由于一些信息，比如用户 ID、过期等信息，不需要再外部存储中关联。因此业界对 token 做了进一步优化，设计了一种自包含令牌，令牌签发后无需从服务器存储中检查是否合法，通过解析令牌就能获取令牌的过期、有效等信息，这就是JWT （JSON Web Token）</h3>
-<h3 id="一般的一个基本的jwt令牌为一段点分3段式结构">一般的，一个基本的JWT令牌为一段点分3段式结构</h3>
+<p>基于JWT token的认证方式，由于一些信息，比如用户 ID、过期等信息，不需要再外部存储中关联。因此业界对 token 做了进一步优化，设计了一种自包含令牌，令牌签发后无需从服务器存储中检查是否合法，通过解析令牌就能获取令牌的过期、有效等信息，这就是JWT （JSON Web Token）</p>
+<p>一般的，一个基本的JWT令牌为一段点分3段式结构：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -327,14 +264,10 @@
 </div>
 </div><h3 id="生成jwt的流程">生成JWT的流程：</h3>
 <p><img src="https://cdn.jsdelivr.net/gh/KidoThunder/images/imagesUeWr0f.png" alt="image-20200702221501133"></p>
-<ul>
-<li>
 <ol>
-<li>header json 的 base64 编码为令牌第一部分，用于描述关于该JWT的最基本的信息，例如其类型以及签名所用的算法等。</li>
-</ol>
-</li>
 <li>
-<ol start="2">
+<p>header json 的 base64 编码为令牌第一部分，用于描述关于该JWT的最基本的信息，例如其类型以及签名所用的算法等。</p>
+</li>
 <li>
 <p>payload json 的 base64 编码为令牌第二部分，可以用来放一些不敏感的信息。</p>
 <p>比如：</p>
@@ -371,14 +304,10 @@
 <li>iat(issued at): 在什么时候签发的</li>
 </ul>
 </li>
-</ol>
-</li>
 <li>
-<ol start="3">
-<li>将上面第一、第二部分拼接完的字符串用HS256算法进行加密。在加密的时候，我们还需要提供一个密钥（secret），加密后的内容也是一个字符串，最后这个字符串就是签名，把这个签名拼接在刚才的字符串后面就能得到完整的jwt。</li>
-</ol>
+<p>将上面第一、第二部分拼接完的字符串用HS256算法进行加密。在加密的时候，我们还需要提供一个密钥（secret），加密后的内容也是一个字符串，最后这个字符串就是签名，把这个签名拼接在刚才的字符串后面就能得到完整的jwt。</p>
 </li>
-</ul>
+</ol>
 <h3 id="缺点-3">缺点：</h3>
 <ul>
 <li>安全性，因为数据只是Base64编码，并没有加密，所以不存存放敏感数据</li>
@@ -386,133 +315,101 @@
 <li>一次性，如果想修改其中的内容，就必须签发一个新的JWT。</li>
 </ul>
 <h2 id="oauth">OAuth</h2>
-<h3 id="oauthhttpenwikipediaorgwikioauthopen-authorization是一个关于授权authorization的开放网络标准而不是认证标准提供资源的服务器不需要知道确切的用户身份session只需要验证授权服务器授予的权限token即可目前的版本是20版"><a href="http://en.wikipedia.org/wiki/OAuth">OAuth</a>（Open Authorization）是一个关于授权（authorization）的开放网络标准，而不是认证标准，提供资源的服务器不需要知道确切的用户身份（session），只需要验证授权服务器授予的权限（token）即可，目前的版本是2.0版</h3>
-<h3 id="oauth-在客户端与服务提供商之间设置了一个-授权层authorization--layer客户端不能直接登录服务提供商只能登录授权层以此将用户与客户端区分开来客户端登录授权层所用的令牌token与用户的密码不同用户可以在登录的时候指定授权层令牌的权限范围和有效期">OAuth 在客户端与服务提供商之间，设置了一个 <strong>授权层</strong>（authorization  layer）。客户端不能直接登录服务提供商，只能登录授权层，以此将用户与客户端区分开来。客户端登录授权层所用的令牌（token），与用户的密码不同。用户可以在登录的时候，指定授权层令牌的权限范围和有效期</h3>
-<h3 id="客户端登录授权层以后服务提供商根据令牌的权限范围和有效期向客户端开放用户储存的资料">客户端登录授权层以后，服务提供商根据令牌的权限范围和有效期，向客户端开放用户储存的资料</h3>
-<h3 id="oauth-负责解决分布式系统之间的授权问题即使有时候客户端和资源服务器或者认证服务器存在同一台机器上oauth-没有解决认证的问题但提供了良好的设计利于和现有的认证系统对接">OAuth 负责解决分布式系统之间的授权问题，即使有时候客户端和资源服务器或者认证服务器存在同一台机器上。OAuth 没有解决认证的问题，但提供了良好的设计利于和现有的认证系统对接</h3>
+<p><a href="http://en.wikipedia.org/wiki/OAuth">OAuth</a>（Open Authorization）是一个关于授权（authorization）的开放网络标准，而不是认证标准，提供资源的服务器不需要知道确切的用户身份（session），只需要验证授权服务器授予的权限（token）即可，目前的版本是2.0版</p>
+<p>OAuth 在客户端与服务提供商之间，设置了一个 <strong>授权层</strong>（authorization  layer）。客户端不能直接登录服务提供商，只能登录授权层，以此将用户与客户端区分开来。客户端登录授权层所用的令牌（token），与用户的密码不同。用户可以在登录的时候，指定授权层令牌的权限范围和有效期</p>
+<p>客户端登录授权层以后，服务提供商根据令牌的权限范围和有效期，向客户端开放用户储存的资料</p>
+<p>OAuth 负责解决分布式系统之间的授权问题，即使有时候客户端和资源服务器或者认证服务器存在同一台机器上。OAuth 没有解决认证的问题，但提供了良好的设计利于和现有的认证系统对接</p>
 <h3 id="工作流程-3">工作流程：</h3>
 <p><img src="https://cdn.jsdelivr.net/gh/KidoThunder/images/imagesUeWctg.png" alt="image-20200702230856330"></p>
-<ul>
-<li>
 <ol>
-<li>用户访问第三方应用程序（客户端），客户端要求用户给予授权。</li>
-</ol>
+<li>
+<p>用户访问第三方应用程序（客户端），客户端要求用户给予授权。</p>
 </li>
 <li>
-<ol start="2">
-<li>用户同意给予客户端授权。</li>
-</ol>
+<p>用户同意给予客户端授权。</p>
 </li>
 <li>
-<ol start="3">
-<li>客户端使用第 2 步获得的授权，向认证服务器申请令牌。</li>
-</ol>
+<p>客户端使用第 2 步获得的授权，向认证服务器申请令牌。</p>
 </li>
 <li>
-<ol start="4">
-<li>认证服务器对客户端进行认证以后，确认无误，同意发放令牌。</li>
-</ol>
+<p>认证服务器对客户端进行认证以后，确认无误，同意发放令牌。</p>
 </li>
 <li>
-<ol start="5">
-<li>客户端使用令牌，向资源服务器申请获取资源。</li>
-</ol>
+<p>客户端使用令牌，向资源服务器申请获取资源。</p>
 </li>
 <li>
-<ol start="6">
-<li>资源服务器确认令牌无误，同意向客户端开放资源。</li>
-</ol>
+<p>资源服务器确认令牌无误，同意向客户端开放资源。</p>
 </li>
-</ul>
-<h3 id="上述流程中第二步是关键就是用户如何给客户端授权有了授权之后客户端就可以获取令牌进而获取资源">上述流程中，第二步是关键，就是用户如何给客户端授权，有了授权之后，客户端就可以获取令牌，进而获取资源</h3>
-<h3 id="通常有四种授权方式httpswwwruanyifengcomblog201904oauth-grant-typeshtml">通常有<a href="https://www.ruanyifeng.com/blog/2019/04/oauth-grant-types.html">四种授权方式</a>：</h3>
+</ol>
+<p>上述流程中，第二步是关键，就是用户如何给客户端授权，有了授权之后，客户端就可以获取令牌，进而获取资源</p>
+<p>通常有<a href="https://www.ruanyifeng.com/blog/2019/04/oauth-grant-types.html">四种授权方式</a>：</p>
 <ul>
 <li>
-<h3 id="授权码方式authorization-code">授权码方式（authorization code）</h3>
+<p>授权码方式（authorization code）</p>
 <ul>
 <li>指的是第三方应用先申请一个授权码，然后再用该码获取令牌</li>
 </ul>
 </li>
 <li>
-<h3 id="简化方式implicit">简化方式（implicit）</h3>
+<p>简化方式（implicit）</p>
 <ul>
 <li>有些 Web 应用是纯前端应用，没有后端。这时就不能用上面的方式了，必须将令牌储存在前端。<a href="https://tools.ietf.org/html/rfc6749">RFC 6749</a> 就规定了第二种方式，允许直接向前端颁发令牌。这种方式没有授权码这个中间步骤，所以称为&quot;隐藏式&rdquo;（implicit）</li>
 </ul>
 </li>
 <li>
-<h3 id="密码方式resource-owner-password-credentials">密码方式（resource owner password credentials）</h3>
-<ul>
-<li>如果你高度信任某个应用，RFC 6749 也允许用户把用户名和密码，直接告诉该应用。该应用就使用你的密码，申请令牌，这种方式称为&quot;密码式&rdquo;（password）</li>
-</ul>
+<p>密码方式（resource owner password credentials）</p>
 </li>
 <li>
-<h3 id="客户端方式client-credentials">客户端方式（client credentials）</h3>
-<ul>
-<li>适用于没有前端的命令行应用，即在命令行下请求令牌</li>
-</ul>
+<p>如果你高度信任某个应用，RFC 6749 也允许用户把用户名和密码，直接告诉该应用。该应用就使用你的密码，申请令牌，这种方式称为&quot;密码式&rdquo;（password）</p>
+</li>
+<li>
+<p>客户端方式（client credentials）</p>
+</li>
+<li>
+<p>适用于没有前端的命令行应用，即在命令行下请求令牌</p>
 </li>
 </ul>
 <h2 id="openid-authentication">OpenID Authentication</h2>
-<h3 id="openid是一个去中心化httpszhwikipediaorgwiki去中心化的网上身份认证httpszhwikipediaorgwiki数字身份系统对于支持openid的网站用户不需要记住像用户名和密码这样的传统验证标记取而代之的是他们只需要预先在一个作为openid身份提供者identity-provider-idp的服务进行注册">OpenID是一个<a href="https://zh.wikipedia.org/wiki/%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96">去中心化</a>的网上<a href="https://zh.wikipedia.org/wiki/%E6%95%B0%E5%AD%97%E8%BA%AB%E4%BB%BD">身份认证</a>系统。对于支持OpenID的网站，用户不需要记住像用户名和密码这样的传统验证标记。取而代之的是，他们只需要预先在一个作为OpenID身份提供者（identity provider, IdP）的服务进行注册</h3>
-<h3 id="如果要访问各种实体例如web-站点通常需要与每个实体关联的唯一帐戸openid-可使由-openid-提供者处理的一组凭证授予对支持-openid-的任何数目的实体的访问权">如果要访问各种实体（例如Web 站点），通常需要与每个实体关联的唯一帐戸。OpenID 可使由 OpenID 提供者处理的一组凭证授予对支持 OpenID 的任何数目的实体的访问权</h3>
-<h3 id="要求用户登录到某个支持-openid-并充当依赖方的实体例如web-站点时用户通过直接与-openid-提供者进行交互而不是向-依赖方rp-提供其凭证来进行认证openid-提供者验证用户身份并将认证确认信息发送回-rp从-openid-提供者收到此确认信息时rp-会将用户作为已认证用户接受">要求用户登录到某个支持 OpenID 并充当依赖方的实体（例如Web 站点）时，用户通过直接与 OpenID 提供者进行交互而不是向 依赖方（RP ）提供其凭证来进行认证。OpenID 提供者验证用户身份，并将认证确认信息发送回 RP。从 OpenID 提供者收到此确认信息时，RP 会将用户作为已认证用户接受</h3>
+<p>OpenID是一个<a href="https://zh.wikipedia.org/wiki/%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%8C%96">去中心化</a>的网上<a href="https://zh.wikipedia.org/wiki/%E6%95%B0%E5%AD%97%E8%BA%AB%E4%BB%BD">身份认证</a>系统。对于支持OpenID的网站，用户不需要记住像用户名和密码这样的传统验证标记。取而代之的是，他们只需要预先在一个作为OpenID身份提供者（identity provider, IdP）的服务进行注册</p>
+<p>如果要访问各种实体（例如Web 站点），通常需要与每个实体关联的唯一帐戸。OpenID 可使由 OpenID 提供者处理的一组凭证授予对支持 OpenID 的任何数目的实体的访问权</p>
+<p>要求用户登录到某个支持 OpenID 并充当依赖方的实体（例如Web 站点）时，用户通过直接与 OpenID 提供者进行交互而不是向 依赖方（RP ）提供其凭证来进行认证。OpenID 提供者验证用户身份，并将认证确认信息发送回 RP。从 OpenID 提供者收到此确认信息时，RP 会将用户作为已认证用户接受</p>
 <h3 id="工作流程-4">工作流程：</h3>
 <p><img src="https://cdn.jsdelivr.net/gh/KidoThunder/images/imagesUeW6AS.png" alt="image-20200702233648904"></p>
-<ul>
-<li>
 <ol>
-<li>用户尝试访问受保护资源（例如Web 页面）</li>
-</ol>
+<li>
+<p>用户尝试访问受保护资源（例如Web 页面）</p>
 </li>
 <li>
-<ol start="2">
-<li>依赖方（RP）（在此示例中为 WebSphere Application Server）显示受保护资源的表单登录页面</li>
-</ol>
+<p>依赖方（RP）（在此示例中为 WebSphere Application Server）显示受保护资源的表单登录页面</p>
 </li>
 <li>
-<ol start="3">
-<li>用户返回给RP OpenID 标识</li>
-</ol>
+<p>用户返回给RP OpenID 标识</p>
 </li>
 <li>
-<ol start="4">
-<li>RP 使用用户标识，并将用户重定向到相应 OpenID 提供者</li>
-</ol>
+<p>RP 使用用户标识，并将用户重定向到相应 OpenID 提供者</p>
 </li>
 <li>
-<ol start="5">
-<li>OpenID 提供者提示用户提供凭证</li>
-</ol>
+<p>OpenID 提供者提示用户提供凭证</p>
 </li>
 <li>
-<ol start="6">
-<li>用户提供与 OpenID 提供者关联的帐戸的凭证</li>
-</ol>
+<p>用户提供与 OpenID 提供者关联的帐戸的凭证</p>
 </li>
 <li>
-<ol start="7">
-<li>OpenID 提供者认证用户，并（可选）提示用户批准或拒绝向 RP 提供用户信息。 它之后会将用户重定向回 RP，并返回认证结果。如果 OpenID 提供者认证成功，那么 RP 会尝试对用户进行授权。如果授权成功，那么 RP 会建立与用户的认证会话。</li>
-</ol>
+<p>OpenID 提供者认证用户，并（可选）提示用户批准或拒绝向 RP 提供用户信息。 它之后会将用户重定向回 RP，并返回认证结果。如果 OpenID 提供者认证成功，那么 RP 会尝试对用户进行授权。如果授权成功，那么 RP 会建立与用户的认证会话。</p>
 </li>
-</ul>
+</ol>
 <h2 id="saml">SAML</h2>
-<h3 id="saml全称为security-assertion-markup-language是一种用于安全性断言的标记语言目前的最新版本是20"><strong>SAML</strong>，全称为<em>Security Assertion Markup Language</em>，是一种用于安全性断言的标记语言，目前的最新版本是2.0</h3>
-<h3 id="saml在单点登录中大有用处在saml协议中一旦用户身份被主网站身份鉴别服务器identity-provideridp认证过后该用户再去访问其他在主站注册过的应用服务提供者service-providerssp时都可以直接登录而不用再输入身份和口令">SAML在单点登录中大有用处：在<em>SAML</em>协议中，一旦用户身份被主网站（身份鉴别服务器，Identity Provider，<em>IDP</em>）认证过后，该用户再去访问其他在主站注册过的应用（服务提供者，Service Providers，<em>SP</em>）时，都可以直接登录，而不用再输入身份和口令</h3>
+<p><strong>SAML</strong>，全称为<em>Security Assertion Markup Language</em>，是一种用于安全性断言的标记语言，目前的最新版本是2.0</p>
+<p>SAML在单点登录中大有用处：在<em>SAML</em>协议中，一旦用户身份被主网站（身份鉴别服务器，Identity Provider，<em>IDP</em>）认证过后，该用户再去访问其他在主站注册过的应用（服务提供者，Service Providers，<em>SP</em>）时，都可以直接登录，而不用再输入身份和口令</p>
 <h3 id="工作流程-5">工作流程：</h3>
 <p><img src="https://cdn.jsdelivr.net/gh/KidoThunder/images/imagesUeWghQ.png" alt="image-20200702224617714"></p>
-<ul>
-<li>
 <ol>
-<li>通过浏览器访问一个网页，若是联合身份域，则Google不会向用户索取用户名密码</li>
-</ol>
+<li>
+<p>通过浏览器访问一个网页，若是联合身份域，则Google不会向用户索取用户名密码</p>
 </li>
 <li>
-<ol start="2">
-<li>Google 服务生成SAML request</li>
-</ol>
+<p>Google 服务生成SAML request</p>
 </li>
-<li>
-<ol start="3">
 <li>
 <p>将用户请求重定向到 IDP 来认证身份</p>
 <p>类似这种URL：</p>
@@ -552,10 +449,6 @@
 </code></pre></td></tr></table>
 </div>
 </div></li>
-</ol>
-</li>
-<li>
-<ol start="4">
 <li>
 <p>当 IDP 收到重定向过来的认证请求时，首先就需要进行身份验证，若验证通过，则生成特定的响应跳转回Google的特定页面，（AssertionConsumerService，简称ACS），同样SAML的身份响应也是基于XML的，结构体如下：</p>
 <div class="highlight"><div class="chroma">
@@ -619,14 +512,10 @@
 </code></pre></td></tr></table>
 </div>
 </div></li>
-</ol>
-</li>
 <li>
-<ol start="5">
-<li>当Google接受到SAML认证响应之后，会首先验证消息的签名是否正确以及是否因超时而失效。然后再从认证消息中提取出Google能识别用户身份（NameID），如果以上的步骤都是顺利的，用户将会成功登陆Google</li>
-</ol>
+<p>当Google接受到SAML认证响应之后，会首先验证消息的签名是否正确以及是否因超时而失效。然后再从认证消息中提取出Google能识别用户身份（NameID），如果以上的步骤都是顺利的，用户将会成功登陆Google</p>
 </li>
-</ul>
+</ol>
 
     </div>
 
