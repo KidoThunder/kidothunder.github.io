@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Kido&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 21 Jul 2020 10:41:09 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 23 Oct 2020 10:42:11 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.zkido.cc/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>九寨游记</title>
+      <link>https://blog.zkido.cc/post/%E4%B9%9D%E5%AF%A8%E6%B8%B8%E8%AE%B0/</link>
+      <pubDate>Fri, 23 Oct 2020 10:42:11 +0800</pubDate>
+      
+      <guid>https://blog.zkido.cc/post/%E4%B9%9D%E5%AF%A8%E6%B8%B8%E8%AE%B0/</guid>
+      <description>引子 小时候我们家里有一台录音机，是那种老式的需要放磁带的，当时就用它来听听力。那时候我爸有一鞋盒的磁带盘，里面有好多那时候比较流行的歌，刀郎</description>
+    </item>
     
     <item>
       <title>利用Github &#43; JsDelivr &#43; PicGo实现自建图床</title>
